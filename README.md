@@ -18,6 +18,8 @@ Caso queira modificar o formato da mensagem, dentro do arquivo pesquisa.py, proc
 
 Há também uma lista chamada *produtos_monitorados*, nela você pode adicionar os itens que deseja monitorar. Lembrando que a busca será rigorosa, se você colocar Smart TV 50 e a oferta postada no site for de TV 50, ele não localizará, portanto, é recomendável evitar acrescentar termos que podem provocar que o produto não seja encontrado.
 
+Antes de rodar o script, rode o comando `pip install -r requirements.txt` para instalar as bibliotecas necessárias para rodar o script.
+
 PS.: A busca não é case sensitive, pois tanto na lista dos produtos monitorados como na lista das ofertas do site é usada a função **.lower()** para transformar tudo em mínuscula na hora de comparar os termos.
 
 ## Alertas
@@ -31,6 +33,8 @@ Caso queira que o script rode "eternamente", você pode fazer isso via **Agendad
     - C:\Users\SeuUsuario\AppData\Local\Programs\Python\Python39\python.exe
 - Em adicionar argumentos, coloque o caminho do script, exemplo:
     - "C:\caminho\para\pesquisa.py"
+
+OBS.: Você pode substituir o executável *python.exe* por *pythonw.exe* caso não queira que suba a janela do prompt enquanto o script estiver rodando, ou seja, vai rodar silenciosamente sem que você perceba a ação.
 
 ### cron
 - Abra o editor do crontab usando o comando `crontab -e`
@@ -73,3 +77,7 @@ while True:
     # Aguarda 15 minutos
     time.sleep(15 * 60)
 ```
+
+
+## TODO
+- [ ] Configurar notificações no desktop em caso de ofertas localizadas (além de receber via Telegram).
