@@ -11,6 +11,7 @@ import csv
 from datetime import datetime
 from bot import enviar_mensagem as bot_msg, escapar_markdown as escape_md, escapar_html as escape_html
 import asyncio
+from plyer import notification
 
 # Setup do driver
 options = Options()
@@ -26,7 +27,7 @@ driver.get(url)
 ofertas = wait.until(EC.presence_of_all_elements_located((By.XPATH, xpath_ofertas)))
 
 # Produto/termo que deseja monitorar
-produtos_monitorados = ['TV 55', 'Lava Louças']
+produtos_monitorados = ['TV 55', 'Louças', 'Chuveiro']
 ofertas_dict = []
 
 try:    
@@ -81,6 +82,12 @@ async def processar_encontrados(encontrados):
             )
 
             await bot_msg(mensagem)
+        
+            notification.notify(
+                title=f"Oferta Encontrada: {oferta['título'][:25]}...",
+                message="Acesse o arquivo .csv ou o Telegram para obter mais detalhes.",
+                timeout=10
+            )
 
         # Salvando ofertas encontradas em CSV
         file_csv = 'ofertas_encontradas.csv'
