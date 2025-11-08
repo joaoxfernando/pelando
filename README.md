@@ -79,5 +79,5 @@ while True:
 ```
 
 
-## TODO
+## TO-DO
 - [ ] Configurar notificações no desktop em caso de ofertas localizadas (além de receber via Telegram).
