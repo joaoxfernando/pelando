@@ -11,7 +11,11 @@ import csv
 from datetime import datetime
 from bot import enviar_mensagem as bot_msg, escapar_markdown as escape_md, escapar_html as escape_html
 import asyncio
+import os
+from dotenv import load_dotenv
 from plyer import notification
+
+load_dotenv()
 
 # Setup do driver
 options = Options()
@@ -22,12 +26,19 @@ wait = WebDriverWait(driver, 15)
 xpath_ofertas = '//main//ul/li//h3/a'
 limite_ofertas = 20
 
+# Ler itens no arquivo txt
+arquivo_itens = os.getenv('itens_file')
+
+with open(arquivo_itens, 'r', encoding='utf-8') as file:
+    produtos_monitorados = [linha.strip() for linha in file if linha.strip()]
+
+
 # Acessar a página
 driver.get(url)
 ofertas = wait.until(EC.presence_of_all_elements_located((By.XPATH, xpath_ofertas)))
 
 # Produto/termo que deseja monitorar
-produtos_monitorados = ['TV 55', 'Louças', 'Chuveiro']
+# produtos_monitorados = ['TV 55', 'Louças']
 ofertas_dict = []
 
 try:    
@@ -80,14 +91,14 @@ async def processar_encontrados(encontrados):
                 f"🛍️ <b>{titulo}</b>\n"
                 f"🔗 <a href=\"{link}\">Clique aqui para ver a oferta</a>"
             )
-
-            await bot_msg(mensagem)
-        
             notification.notify(
                 title=f"Oferta Encontrada: {oferta['título'][:25]}...",
                 message="Acesse o arquivo .csv ou o Telegram para obter mais detalhes.",
                 timeout=10
             )
+
+            await bot_msg(mensagem)
+            
 
         # Salvando ofertas encontradas em CSV
         file_csv = 'ofertas_encontradas.csv'

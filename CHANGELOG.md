@@ -1,5 +1,9 @@
 # Changelog
 
+## [v1.0.1] Nova funcionalidade: Ler ofertas de arquivo txt
+### Adicionado
+- Pesquisa de itens direto de arquivo txt
+
 ## [v1.0.0] Nova funcionalidade: Notificações desktop - 2025-11-08
 ### Adicionado
 - Notificações no desktop
