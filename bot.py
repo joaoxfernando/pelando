@@ -7,8 +7,8 @@ import html
 
 
 load_dotenv()
-TOKEN = os.getenv('TOKEN')
-CHAT_ID = os.getenv('CHAT_ID')
+TOKEN = os.getenv('token')
+CHAT_ID = os.getenv('chat_id')
 
 async def enviar_mensagem(txt):
     app = Application.builder().token(TOKEN).build()
