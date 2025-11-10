@@ -11,6 +11,10 @@ import csv
 from datetime import datetime
 from bot import enviar_mensagem as bot_msg, escapar_markdown as escape_md, escapar_html as escape_html
 import asyncio
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Setup do driver
 options = Options()
@@ -21,12 +25,19 @@ wait = WebDriverWait(driver, 15)
 xpath_ofertas = '//main//ul/li//h3/a'
 limite_ofertas = 20
 
+# Ler itens no arquivo txt
+arquivo_itens = os.getenv('itens_file')
+
+with open(arquivo_itens, 'r', encoding='utf-8') as file:
+    produtos_monitorados = [linha.strip() for linha in file if linha.strip()]
+
+
 # Acessar a página
 driver.get(url)
 ofertas = wait.until(EC.presence_of_all_elements_located((By.XPATH, xpath_ofertas)))
 
 # Produto/termo que deseja monitorar
-produtos_monitorados = ['TV 55', 'Lava Louças']
+# produtos_monitorados = ['TV 55', 'Louças']
 ofertas_dict = []
 
 try:    
