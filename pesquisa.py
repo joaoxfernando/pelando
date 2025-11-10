@@ -13,6 +13,7 @@ from bot import enviar_mensagem as bot_msg, escapar_markdown as escape_md, escap
 import asyncio
 import os
 from dotenv import load_dotenv
+from plyer import notification
 
 load_dotenv()
 
@@ -90,8 +91,14 @@ async def processar_encontrados(encontrados):
                 f"🛍️ <b>{titulo}</b>\n"
                 f"🔗 <a href=\"{link}\">Clique aqui para ver a oferta</a>"
             )
+            notification.notify(
+                title=f"Oferta Encontrada: {oferta['título'][:25]}...",
+                message="Acesse o arquivo .csv ou o Telegram para obter mais detalhes.",
+                timeout=10
+            )
 
             await bot_msg(mensagem)
+            
 
         # Salvando ofertas encontradas em CSV
         file_csv = 'ofertas_encontradas.csv'
