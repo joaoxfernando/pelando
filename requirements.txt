@@ -4,3 +4,4 @@ selenium>=4.15.2
 webdriver-manager>=4.0.1
 python-telegram-bot>=20.3
 python-dotenv>=1.0.0
+plyer>=2.1.0
