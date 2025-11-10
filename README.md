@@ -4,9 +4,9 @@ O intuito desse script é pesquisar por ofertas no Pelando e notificarmos via Bo
 
 ## Instruções
 Crie um arquivo .env e adicione três informações:
-token=INSIRA_TOKEN
-chat_id=INSIRA_CHAT_ID
-itens_file=INSIRA_NOME_DO_ARQUIVO_COM_OS_ITENS_MONITORADOS.txt
+- token=INSIRA_TOKEN
+- chat_id=INSIRA_CHAT_ID
+- itens_file=INSIRA_NOME_DO_ARQUIVO_COM_OS_ITENS_MONITORADOS.txt
 
 ### Como obter o token e chat.id
 - No telegram, chame o @BotFather e crie seu bot, ao final do processo, copie o token que ele fornecer e salve no arquivo **.env**
