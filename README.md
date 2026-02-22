@@ -26,7 +26,7 @@ PS.: A busca não é case sensitive, pois tanto na lista dos produtos monitorado
 ## Alertas
 Caso queira que o script rode "eternamente", você pode fazer isso via **Agendador de Tarefas** (Windows) ou **cron** (Linux/macOS)
 
-### Agendador de Tarefas
+### Agendador de Tarefas (Windows)
 - Abra o Agendador de tarefas (Task Scheduler)
 - Criar tarefa
 - Na aba gatilho (Triggers) clique em Novo, Escolha o periodo (diariamente por exemplo) e configure o intervalo, como Repetir a cada 15 minutos e por 1 dia por exemplo.
@@ -37,7 +37,7 @@ Caso queira que o script rode "eternamente", você pode fazer isso via **Agendad
 
 OBS.: Você pode substituir o executável *python.exe* por *pythonw.exe* caso não queira que suba a janela do prompt enquanto o script estiver rodando, ou seja, vai rodar silenciosamente sem que você perceba a ação.
 
-### cron
+### cron (Linux/MacOS)
 - Abra o editor do crontab usando o comando `crontab -e`
 - Caso queira rodá-lo a cada 15 minutos, acrescente:
 ```bash
@@ -66,7 +66,7 @@ OBS.: Você pode substituir o executável *python.exe* por *pythonw.exe* caso n�
 
 Certifique-se que o cron esteja ativo rodando `sudo service cron status`, caso não esteja, rode `sudo service cron start`
 
-É possível também criar loop dentro do próprio script para rodar o arquivo indefinidamente, porém, não recomendo. Caso opte por seguir dessa forma, envolve todo o código do arquivo pesquisa.py dentro de uma função e no final do arquivo, adicione o código abaixo
+É possível também criar loop dentro do próprio script para rodar o arquivo indefinidamente, porém, não recomendo. Caso opte por seguir dessa forma, envolva todo o código do arquivo pesquisa.py dentro de uma função e no final do arquivo, adicione o código abaixo
 
 ```python
 import time
